@@ -1,0 +1,42 @@
+.navbar{
+    background-color: #2F4F4F;
+}
+h4{
+    font-family: sans-serif;
+    font-size: 150%;
+    font-style: oblique;
+}
+.dropdown-menu{
+    white-space: nowrap;
+    min-width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(34, 34, 34, 1);
+    color: white;
+}
+.nav-list-item{
+    line-height: 35px;
+}
+.nav-list-item i{
+    margin: 10px;
+}
+.nav-list-item span a{
+    text-decoration: none;
+    color: white;
+}
+.nav-list-item:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+.b{
+    position: absolute;
+}
+.nav-link{
+    color: #FFFFFF;
+}
+.dropdown-toggle{
+    color: #FFFFFF;
+}
+button{
+    color: white;
+    background-color: white;
+}

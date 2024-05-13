@@ -1,0 +1,14 @@
+.btn{
+    background-color: #333333;
+    color: white;
+}
+h2 {
+    font-family: 'Cinzel', serif;
+    color: #333333;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn:hover{
+    background-color: #747070;
+}
