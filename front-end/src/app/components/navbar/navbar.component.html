@@ -32,11 +32,14 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about-us']">Nosotros</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!isLoggedIn()" class="nav-item">
           <a class="nav-link" [routerLink]="['/register']">Registrate</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!isLoggedIn()" class="nav-item">
           <a class="nav-link" [routerLink]="['/login']">Inicia Sesión</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item">
+          <a class="nav-link" (click)="logOut()" style="cursor: pointer;">Cerrar Sesión</a>
         </li>
       </ul>
     </div>
