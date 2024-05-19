@@ -6,7 +6,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { userGuard } from './services/user.guard';
-import { UserBooksComponent } from './components/user-books/user-books.component';
+import { UserBooksComponent } from '../../user-books/user-books.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent, pathMatch: 'full'},
