@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { userGuard } from './services/user.guard';
 import { UserBooksComponent } from './components/profile/user-books/user-books.component';
 import { ForoComponent } from './components/foro/foro.component';
+import { CommentsComponent } from './components/foro/comments/comments.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent, pathMatch: 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "about-us", component: AboutusComponent},
   {path: "profile", component: ProfileComponent, canActivate: [userGuard]},
   {path: "your-books", component: UserBooksComponent, canActivate: [userGuard]},
-  {path: "foro", component: ForoComponent, canActivate: [userGuard]}
+  {path: "foro", component: ForoComponent},
+  {path: "comments", component: CommentsComponent}
 ];
 
 @NgModule({

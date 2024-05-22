@@ -40,7 +40,8 @@ public class SecurityConfig {
                                 "/api/auth/login",
                                 "/api/files/upload/**",
                                 "/api/files/books",
-                                "/api/files/download-file/**").permitAll()
+                                "/api/files/download-file/**",
+                                "/api/post/all-posts").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .anyRequest().authenticated()
                 )

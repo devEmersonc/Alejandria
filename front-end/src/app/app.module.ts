@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SidenavComponent } from './components/profile/sidenav/sidenav.component';
 import { UserBooksComponent } from './components/profile/user-books/user-books.component';
 import { ForoComponent } from './components/foro/foro.component';
+import { CommentsComponent } from './components/foro/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ForoComponent } from './components/foro/foro.component';
     SidenavComponent,
     UserBooksComponent,
     ForoComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
