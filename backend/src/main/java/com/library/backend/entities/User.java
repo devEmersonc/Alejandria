@@ -34,6 +34,9 @@ public class User implements UserDetails {
     @NotBlank(message = "La contraseña es obligatoria.")
     private String password;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PDF> libros;
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
@@ -133,6 +136,14 @@ public class User implements UserDetails {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<PDF> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<PDF> libros) {
+        this.libros = libros;
     }
 
     @PrePersist

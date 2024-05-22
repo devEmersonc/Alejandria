@@ -38,7 +38,8 @@ public class SecurityConfig {
                                 "/api/user/update/**",
                                 "/api/user/delete/**",
                                 "/api/auth/login",
-                                "/api/files/upload",
+                                "/api/files/upload/**",
+                                "/api/files/books",
                                 "/api/files/download-file/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .anyRequest().authenticated()

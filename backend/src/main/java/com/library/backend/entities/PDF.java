@@ -1,5 +1,6 @@
 package com.library.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,11 @@ public class PDF {
     @Lob
     @Column(columnDefinition="LONGBLOB")
     private byte[] data;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Long getId() {
         return id;
@@ -47,5 +53,13 @@ public class PDF {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
