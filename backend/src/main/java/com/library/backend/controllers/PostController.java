@@ -33,6 +33,11 @@ public class PostController {
         return postService.getAllPosts();
     }
 
+    @GetMapping("/getPost/{post_id}")
+    public Post getPost(@PathVariable Long post_id){
+        return postService.getPost(post_id);
+    }
+
     @PostMapping("/post/{user_id}")
     public ResponseEntity<?> newPost(@Valid @RequestBody Post post, BindingResult result, @PathVariable Long user_id){
         User user = userRepository.findById(user_id).orElse(null);

@@ -4,10 +4,10 @@
             <img src="../../../assets/user.png" alt="" style="width: 100%;" class="mt-2">                
         </div>
         <div class="col-lg-10 mt-2" style="margin-left: 30px;">
-            <p class="mt-2">Dragonlike  <span>20/05/2024</span></p>
-            <h4>Libros de filosofia por favor ajsdj ajsdjlsaj jasd kajsdlk jlksajkdj lasj ldjalsdjja </h4>
+            <p class="mt-2" *ngIf="post.user">{{post.user.username}}  <span>20/05/2024</span></p>
+            <h4>{{post.title}}</h4>
             <p class="mt-4">
-                recomienden libros de filosofia jejeje kajsdk jasjda jlasjlda jklsad
+                {{post.description}}
             </p>
         </div>
     </div>
@@ -15,10 +15,10 @@
     <div *ngIf="isLoggedIn()" class="row justify-content-center mt-3">
         <div class="col-lg-6 mt-4 p-2 box d-flex">
             <div class="col-1">
-                <img src="../../../assets/user.png" alt="" width="100%">
+                <img src="../../../../assets/user.png" alt="" width="100%">
             </div>
             <div class="col-lg-10" style="margin-left: 30px;">
-                <p class="mt-2">Dragonlike</p>
+                <p class="mt-2">{{currentUser.username}}</p>
                 <div class="col-12 d-flex justify-content-end">
                     <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapseExample">Comentar</button>
                 </div>                    

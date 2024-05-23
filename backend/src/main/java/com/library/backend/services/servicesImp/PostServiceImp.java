@@ -36,4 +36,9 @@ public class PostServiceImp implements PostService {
 
         return postRepository.save(newPost);
     }
+
+    @Override
+    public Post getPost(Long post_id){
+        return postRepository.findById(post_id).orElse(null);
+    }
 }

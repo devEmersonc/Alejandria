@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: "profile", component: ProfileComponent, canActivate: [userGuard]},
   {path: "your-books", component: UserBooksComponent, canActivate: [userGuard]},
   {path: "foro", component: ForoComponent},
-  {path: "comments", component: CommentsComponent}
+  {path: "comments/:id", component: CommentsComponent}
 ];
 
 @NgModule({
