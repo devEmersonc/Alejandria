@@ -23,7 +23,7 @@
                     <img src="../../../assets/user.png" alt="" width="100%">
                 </div>
                 <div class="col-lg-10" style="margin-left: 30px;">
-                    <p class="mt-2">Dragonlike</p>
+                    <p class="mt-2">{{user.username}}</p>
                     <div class="col-12 d-flex justify-content-end">
                         <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapseExample">Nuevo Post</button>
                     </div>                    
@@ -63,7 +63,7 @@
                 <img src="../../../assets/user.png" alt="" style="width: 100%;" class="mt-2">                
             </div>
             <div class="col mt-2" style="margin-left: 30px;">
-                <p class="mt-2">Dragonlike  <span>20/05/2024</span></p>
+                <p class="mt-2">{{post.user.username}}  <span>20/05/2024</span></p>
                 <h4>{{post.title}}</h4>
                 <p class="mt-4">
                     {{post.description}}

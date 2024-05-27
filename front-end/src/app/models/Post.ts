@@ -1,4 +1,5 @@
 import { User } from "./user";
+import { Comment } from "./comment";
 
 export class Post{
     id:number;
@@ -6,4 +7,5 @@ export class Post{
     title:string;
     description:string;
     user:User;
+    comments:Comment[] = [];
 }

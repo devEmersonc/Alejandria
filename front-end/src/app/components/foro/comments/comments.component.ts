@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/Post';
+import { Comment } from 'src/app/models/comment';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/authService/auth.service';
+import { CommentService } from 'src/app/services/commentService/comment.service';
 import { PostService } from 'src/app/services/postService/post.service';
 
 @Component({
@@ -14,8 +16,10 @@ export class CommentsComponent implements OnInit{
 
   post:Post = new Post();
   currentUser:User = new User();
+  comment:Comment = new Comment();
+  errors:string[];
 
-  constructor(private login: AuthService, private route: ActivatedRoute, private postService: PostService){}
+  constructor(private login: AuthService, private route: ActivatedRoute, private postService: PostService, private commentService: CommentService){}
 
   ngOnInit(): void {
     this.getPost();
@@ -54,6 +58,17 @@ export class CommentsComponent implements OnInit{
     this.login.currentUser().subscribe((user:any) => {
       this.login.setUser(user);
       this.currentUser = user;
+    })
+  }
+
+  newComment(){
+    this.commentService.newComment(this.comment, this.currentUser.id, this.post.id).subscribe({
+      next: (json) => {
+        window.location.reload();
+      },
+      error: (err) => {
+        this.errors = err.error.errors as string[];
+      }
     })
   }
 }

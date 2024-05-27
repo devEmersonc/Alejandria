@@ -8,4 +8,5 @@ export class User{
     password:string;
     libros:Pdf[] = [];
     posts:Post[] = [];
+    comments:Comment[] = [];
 }

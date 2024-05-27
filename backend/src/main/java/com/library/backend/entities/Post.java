@@ -42,7 +42,7 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
+
     private List<Comment> comments;
 
     public Long getId() {
