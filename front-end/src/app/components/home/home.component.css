@@ -9,6 +9,17 @@ h2 {
 .card{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.card:hover{
+    transform: scale(1.02);
+}
 .btn:hover{
     background-color: #747070;
+}
+
+img{
+    height: 300px;
+}
+
+.contain{
+    height: 100px;
 }

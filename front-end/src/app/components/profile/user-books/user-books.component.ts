@@ -12,6 +12,9 @@ import Swal from 'sweetalert2';
 export class UserBooksComponent implements OnInit{
 
   selectedFile: File | null = null;
+  selectedImage: File | null = null;
+  title:string;
+  author:string;
   user:User = new User();
 
   constructor(private fileService: FileService, private login:AuthService){}
@@ -31,9 +34,13 @@ export class UserBooksComponent implements OnInit{
     this.selectedFile = event.target.files[0];
   }
 
+  onFileChangeT(event:any) {
+    this.selectedImage = event.target.files[0];
+  }
+
   onUpload() {
-    if (this.selectedFile) {
-      this.fileService.uploadFile(this.selectedFile, this.user.id).subscribe(
+    if (this.selectedFile && this.title != undefined && this.author != undefined && this.selectedImage) {
+      this.fileService.uploadFile(this.selectedFile, this.title, this.author, this.user.id, this.selectedImage).subscribe(
         response => {
           Swal.fire({
             position: "center",
@@ -52,7 +59,7 @@ export class UserBooksComponent implements OnInit{
         }
       );
     } else {
-      alert('Debes seleccionar un archivo.');
+      alert('Debes seleccionar un archivo, poner su título y autor.');
     }
   }
 

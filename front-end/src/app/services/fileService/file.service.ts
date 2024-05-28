@@ -16,11 +16,12 @@ export class FileService {
     return this.http.get<Pdf[]>(`${this.baseUrl}/books`);
   }
 
-  uploadFile(file: File, user_id:number): Observable<any>{
+  uploadFile(file: File, title:string, author:string, user_id:number, image: File): Observable<any>{
     const formData : FormData = new FormData();
     formData.append('file', file);
+    formData.append('image', image)
 
-    return this.http.post(`${this.baseUrl}/upload/${user_id}`, formData, {
+    return this.http.post(`${this.baseUrl}/upload/${user_id}/${title}/${author}`, formData, {
       responseType: 'text' as 'json'
     });
   }

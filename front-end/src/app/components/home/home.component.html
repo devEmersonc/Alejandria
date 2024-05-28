@@ -5,11 +5,15 @@
         </div>
     </div>
     <div class="row p-3 justify-content-center mt-2">        
-        <div class="card m-4" style="width: 10rem;" *ngFor="let book of filterBooks">
-            <img class="card-img-top mt-3" src="../../../assets/nikola.png" alt="Card image cap">
+        <div class="card m-4" style="width: 13rem;" *ngFor="let book of filterBooks">
+            <img *ngIf="book?.photo" class="card-img-top mt-3" src="http://localhost:8080/api/files/view/image/{{book.photo}}" alt="Card image cap">
+            <img *ngIf="!book?.photo" class="card-img-top mt-3" src="../../../assets/nikola.png" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text text-center">{{book.fileName}}</p>
-                <button class="btn d-flex d-block mx-auto" href="">Ver más</button>
+                <div class="contain text-center">
+                    <p class="card-text">{{book.fileName}}</p>
+                    <p class="card-text">{{book.author}}</p>
+                </div>
+                <button class="btn d-flex d-block mx-auto" (click)="downloadBook(book.id)">Descargar</button>
             </div>
         </div>
     </div>

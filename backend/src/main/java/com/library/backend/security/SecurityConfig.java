@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 "/api/auth/login",
                                 "/api/files/upload/**",
                                 "/api/files/books",
+                                "/api/files/view/image/**",
                                 "/api/files/download-file/**",
                                 "/api/post/all-posts",
                                 "/api/post/getPost/**").permitAll()

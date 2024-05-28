@@ -2,6 +2,7 @@ package com.library.backend.services.servicesImp;
 
 import com.library.backend.entities.PDF;
 import com.library.backend.entities.User;
+import com.library.backend.models.PDFDTO;
 import com.library.backend.repositories.PDFRepository;
 import com.library.backend.repositories.UserRepository;
 import com.library.backend.services.PDFService;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PDFServiceImp implements PDFService {
@@ -23,11 +25,13 @@ public class PDFServiceImp implements PDFService {
     private UserRepository userRepository;
 
     @Override
-    public PDF storeFile(MultipartFile file, Long user_id) throws IOException {
+    public PDF storeFile(MultipartFile file, String title, String author, Long user_id, String imageName) throws IOException {
         PDF pdf = new PDF();
         User user = userRepository.findById(user_id).orElse(null);
 
-        pdf.setFileName(file.getOriginalFilename());
+        pdf.setFileName(title);
+        pdf.setAuthor(author);
+        pdf.setPhoto(imageName);
         pdf.setFileType(file.getContentType());
         pdf.setData(file.getBytes());
         pdf.setUser(user);
@@ -41,7 +45,18 @@ public class PDFServiceImp implements PDFService {
     }
 
     @Override
-    public List<PDF> getAllBooks(){
-        return pdfRepository.findAll();
+    public List<PDFDTO> getAllBooks(){
+        List<PDF> books = pdfRepository.findAll();
+        return  books.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    private PDFDTO convertToDTO(PDF pdf){
+        PDFDTO dto = new PDFDTO();
+        dto.setId(pdf.getId());
+        dto.setFileName(pdf.getFileName());
+        dto.setAuthor(pdf.getAuthor());
+        dto.setPhoto(pdf.getPhoto());
+
+        return dto;
     }
 }

@@ -12,6 +12,10 @@ public class PDF {
     private Long id;
 
     private String fileName;
+
+    private String author;
+
+    private String photo;
     private String fileType;
 
     @Lob
@@ -59,7 +63,23 @@ public class PDF {
         return user;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
