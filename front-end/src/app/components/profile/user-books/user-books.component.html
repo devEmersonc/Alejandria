@@ -22,7 +22,7 @@
                                 <td>
                                     <a href="">Eliminar</a>
                                 </td>
-                            </tr>                            
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -33,10 +33,20 @@
                             <h2>Publicar nuevo libro</h2>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Titulo del libro..." [(ngModel)]="title">
+                            <input type="text" id="title" name="title" class="form-control"
+                                placeholder="Titulo del libro..." [(ngModel)]="title">
                         </div>
                         <div class="form-group mt-4">
-                            <input type="text" id="author" name="author" class="form-control" placeholder="Autor del libro..." [(ngModel)]="author">
+                            <input type="text" id="author" name="author" class="form-control"
+                                placeholder="Autor del libro..." [(ngModel)]="author">
+                        </div>
+                        <div class="form-group mt-4">
+                            <select name="c" id="c" class="form-select">
+                                <option selected>Elige una categoría</option>
+                                <option *ngFor="let c of categories" [ngValue]="c">
+                                    {{c.name}}
+                                </option>
+                            </select>
                         </div>
                         <div class="input-group row mb-4 mt-4 justify-content-center">
                             <label for="image" class="col-form-label text-center">Agrega una imagen de portada:</label>
@@ -51,10 +61,10 @@
                             </div>
                         </div>
                         <div class="input-group-append">
-                            <button   class="btn btn-outline-secondary mx-auto d-flex d-block"
-                                type="button" id="inputGroupFile02" (click)="onUpload()">Subir Archivo</button>
+                            <button class="btn btn-outline-secondary mx-auto d-flex d-block" type="button"
+                                id="inputGroupFile02" (click)="onUpload()">Subir Archivo</button>
                         </div>
-                    </form>                
+                    </form>
                 </div>
             </div>
         </div>
