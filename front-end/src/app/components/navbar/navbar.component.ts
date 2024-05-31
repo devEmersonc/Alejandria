@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/authService/auth.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { AuthService } from 'src/app/services/authService/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+
 
   categorias = [
     {
@@ -46,6 +48,7 @@ export class NavbarComponent implements OnInit{
       name: 'Libros de Tecnología'
     }
   ]
+
 
   constructor(private login: AuthService){}
 

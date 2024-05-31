@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "about-us", component: AboutusComponent},
   {path: "profile", component: ProfileComponent, canActivate: [userGuard]},
-  {path: "your-books", component: UserBooksComponent, canActivate: [userGuard]},
+  {path: "book", component: UserBooksComponent, canActivate: [userGuard]},
   {path: "foro", component: ForoComponent},
   {path: "comments/:id", component: CommentsComponent}
 ];

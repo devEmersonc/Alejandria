@@ -43,7 +43,8 @@ public class SecurityConfig {
                                 "/api/files/view/image/**",
                                 "/api/files/download-file/**",
                                 "/api/post/all-posts",
-                                "/api/post/getPost/**").permitAll()
+                                "/api/post/getPost/**",
+                                "/api/categories").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .anyRequest().authenticated()
                 )

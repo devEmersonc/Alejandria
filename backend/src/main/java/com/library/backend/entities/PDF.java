@@ -16,6 +16,8 @@ public class PDF {
     private String author;
 
     private String photo;
+
+
     private String fileType;
 
     @Lob
@@ -26,6 +28,10 @@ public class PDF {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Long getId() {
         return id;
@@ -77,6 +83,14 @@ public class PDF {
 
     public String getPhoto() {
         return photo;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void setPhoto(String photo) {

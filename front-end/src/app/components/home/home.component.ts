@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pdf } from 'src/app/models/Pdf';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/authService/auth.service';
 import { FileService } from 'src/app/services/fileService/file.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.getAllBooks();
-  }
+  }  
 
   getAllBooks(){
     this.fileService.getAllBooks().subscribe(books => {
