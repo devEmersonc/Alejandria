@@ -1,5 +1,6 @@
 package com.library.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -17,9 +18,12 @@ public class PDF {
 
     private String photo;
 
+    private String category;
 
+    @JsonIgnore
     private String fileType;
 
+    @JsonIgnore
     @Lob
     @Column(columnDefinition="LONGBLOB")
     private byte[] data;
@@ -28,10 +32,6 @@ public class PDF {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
 
     public Long getId() {
         return id;
@@ -85,15 +85,15 @@ public class PDF {
         return photo;
     }
 
-    public Category getCategory() {
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 }

@@ -1,7 +1,6 @@
 package com.library.backend.controllers;
 
 import com.library.backend.entities.PDF;
-import com.library.backend.models.PDFDTO;
 import com.library.backend.services.PDFService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -29,23 +28,13 @@ public class PDFController {
     @Autowired
     private PDFService pdfService;
 
-    /*@PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
-        try {
-            PDF pdfFile = pdfService.storeFile(file);
-            return ResponseEntity.ok().body("Archivo PDF cargado correctamente.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al cargar el archivo PDF.");
-        }
-    }*/
-
     @GetMapping("/books")
-    public List<PDFDTO> getAllBooks(){
-        return pdfService.getAllBooks();
+    public List<PDF> getAllBooks(){
+        return pdfService.getBooks();
     }
 
-    @PostMapping("/upload/{user_id}/{title}/{author}")
-    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("image") MultipartFile image, @PathVariable Long user_id, @PathVariable String title, @PathVariable String author) {
+    @PostMapping("/upload/{user_id}/{title}/{author}/{category}")
+    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("image") MultipartFile image, @PathVariable Long user_id, @PathVariable String title, @PathVariable String author, @PathVariable String category) {
         Map<String, String> response = new HashMap<>();
 
         if(!image.isEmpty()){
@@ -54,7 +43,7 @@ public class PDFController {
 
             try {
                 Files.copy(image.getInputStream(), imagePath);
-                pdfService.storeFile(file, title, author, user_id, imageName);
+                pdfService.storeFile(file, title, author, user_id, imageName, category);
                 response.put("message", "Archivo PDF cargado correctamente.");
             } catch (Exception e) {
                 response.put("message", "Falló la carga del archivo.");
@@ -63,23 +52,6 @@ public class PDFController {
         }
         return ResponseEntity.ok(response);
     }
-
-
-    /*@PostMapping("/upload/{user_id}/{title}/{author}")
-    public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("image") MultipartFile image, @PathVariable Long user_id, @PathVariable String title, @PathVariable String author) {
-
-
-        try {
-            pdfService.storeFile(file, title, author, user_id, image);
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Archivo PDF cargado correctamente.");
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Falló la carga del archivo.");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }*/
 
     @GetMapping("/download-file/{id}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable Long id){

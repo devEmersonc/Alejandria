@@ -12,7 +12,7 @@ import { FileService } from 'src/app/services/fileService/file.service';
 export class HomeComponent implements OnInit{
 
   books:Pdf[] = [];
-  filterBooks:Pdf[] = [];
+  filterBooks:string = '';
 
   constructor(private fileService: FileService){}
 
@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit{
   getAllBooks(){
     this.fileService.getAllBooks().subscribe(books => {
       this.books = books;
-      for(let book of books){
-        book.fileName = book.fileName.replace('_', ' ');
-        this.filterBooks.push(book);
-      }
     })
   }
 

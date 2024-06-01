@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/category';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/authService/auth.service';
-import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { FileService } from 'src/app/services/fileService/file.service';
 import Swal from 'sweetalert2';
 
@@ -17,14 +15,14 @@ export class UserBooksComponent implements OnInit{
   selectedImage: File | null = null;
   title:string;
   author:string;
+  category:string;
   user:User = new User();
-  categories:Category[];
+  categories:string[] = ["Fantasía", "Poesía", "Ciencia ficción", "Comic", "Manga", "Economía", "Arte", "Ciencia", "filosofía", "Historia", "Esoterismo", "Cocina", "Autoayuda"];
 
-  constructor(private fileService: FileService, private login:AuthService, private categoryService: CategoryService){}
+  constructor(private fileService: FileService, private login:AuthService){}
 
   ngOnInit(): void {
     this.getCurrentUser();
-    this.getAllCategories();
   }
 
   getCurrentUser(){
@@ -43,8 +41,8 @@ export class UserBooksComponent implements OnInit{
   }
 
   onUpload() {
-    if (this.selectedFile && this.title != undefined && this.author != undefined && this.selectedImage) {
-      this.fileService.uploadFile(this.selectedFile, this.title, this.author, this.user.id, this.selectedImage).subscribe(
+    if (this.selectedFile && this.title != undefined && this.author != undefined && this.selectedImage && this.category != undefined) {      
+      this.fileService.uploadFile(this.selectedFile, this.title, this.author, this.user.id, this.selectedImage, this.category).subscribe(
         response => {
           Swal.fire({
             position: "center",
@@ -83,11 +81,5 @@ export class UserBooksComponent implements OnInit{
         text: "Algo salió mal.",
       });
     });
-  }
-
-  getAllCategories(){
-    this.categoryService.getAllCategories().subscribe(categories => {
-      this.categories = categories;
-    })
   }
 }

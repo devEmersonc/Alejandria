@@ -4,8 +4,19 @@
             <h2>El conocimiento es el alimento del alma</h2>
         </div>
     </div>
+    <div class="row mt-4">
+        <div class="col-3 d-flex justify-content-end">
+          <i class="fa-solid fa-magnifying-glass p-2" style="font-size: 20px;"></i>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="text" class="form-control col-2" name="filterBooks" placeholder="Buscar por nombre del libro..."
+              [(ngModel)]="filterBooks">
+          </div>
+        </div>
+      </div>
     <div class="row p-3 justify-content-center mt-2">        
-        <div class="card m-4" style="width: 13rem;" *ngFor="let book of filterBooks">
+        <div class="card m-4" style="width: 13rem;" *ngFor="let book of books | filter:filterBooks">
             <img *ngIf="book?.photo" class="card-img-top mt-3" src="http://localhost:8080/api/files/view/image/{{book.photo}}" alt="Card image cap">
             <img *ngIf="!book?.photo" class="card-img-top mt-3" src="../../../assets/nikola.png" alt="Card image cap">
             <div class="card-body">

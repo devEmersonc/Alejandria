@@ -1,42 +1,45 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-2 min-vh-100" style="background-color: #fff;">
-            <app-sidenav></app-sidenav>
-        </div>        
-        <div class="col">
-            <div class="row row-nowarp mx-auto mt-5 justify-content-center">
-                <div class="col-lg-3 m-4 p-5 bg-box">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="row justify-content-center mt-4">
+                <div class="col-8 text-center">
+                    <h2>Actualizar perfil</h2>
+                </div>
+            </div>
+            <div class="row row-nowarp mx-auto p-2 mt-5 justify-content-center bg-box">
+                <div class="col-lg-4 p-5">
                     <div class="col text-center">
-                        <img  src="../../../assets/user.png" alt="male.png" style="width: 150px; height: 150px; border-radius: 200px;">
+                        <img src="../../../assets/user.png" alt="male.png"
+                            style="width: 150px; height: 150px; border-radius: 200px;">
                     </div>
                     <div class="input-group mb-3 mt-4 mb-5">
                         <input type="file" class="form-control" id="inputGroupFile02">
                     </div>
                     <div class="input-group-append">
-                        <button   class="btn btn-outline-secondary mx-auto d-flex d-block"
-                            type="button" id="inputGroupFile02">Subir foto</button>
+                        <button class="btn btn-outline-secondary mx-auto d-flex d-block" type="button"
+                            id="inputGroupFile02">Subir foto</button>
                     </div>
                 </div>
-                <div class="col mx-auto mt-3 p-2">
-                   <div class="col-lg-10 bg-box">
-                    <div class="form p-4">
-                        <div class="form-group row mx-auto">
-                            <label for="email" class="col-form-label ">Correo electrónico</label>
-                            <div class="col-lg-10">
-                                <input type="email" id="email" name="email" class="form-control">
+                <div class="col mx-auto">
+                    <div class="col-lg-12">
+                        <div class="form p-4">
+                            <div class="form-group row mx-auto">
+                                <label for="email" class="col-form-label ">Correo electrónico</label>
+                                <div class="col-lg-12">
+                                    <input type="email" id="email" name="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row mx-auto mb-4">
+                                <label for="password" class="col-form-label">Contraseña</label>
+                                <div class="col-lg-12">
+                                    <input type="password" id="password" name="password" class="form-control">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row mx-auto mb-4">
-                            <label for="password" class="col-form-label">Contraseña</label>
-                            <div class="col-lg-10">
-                                <input type="password" id="password" name="password" class="form-control"> 
-                            </div>
+                        <div class="col-lg-12 d-flex justify-content-end p-3">
+                            <button class="btn btn-dark d-flex">Actualizar</button>
                         </div>
                     </div>                    
-                   </div>
-                    <div class="col-lg-10 mt-4 d-flex justify-content-end">
-                        <button class="btn btn-dark d-flex">Actualizar</button>
-                    </div>
                 </div>
             </div>
         </div>

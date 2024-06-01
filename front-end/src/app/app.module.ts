@@ -12,10 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SidenavComponent } from './components/profile/sidenav/sidenav.component';
 import { UserBooksComponent } from './components/profile/user-books/user-books.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { CommentsComponent } from './components/foro/comments/comments.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { CommentsComponent } from './components/foro/comments/comments.component
     AboutusComponent,
     HomeComponent,
     ProfileComponent,
-    SidenavComponent,
     UserBooksComponent,
     ForoComponent,
     CommentsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
