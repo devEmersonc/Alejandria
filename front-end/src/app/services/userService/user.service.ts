@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { User } from 'src/app/models/user';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,23 @@ export class UserService {
 
   register(user: User): Observable<User>{
     return this.http.post<User>(`${this.baseUrl}/register`, user);
+  }
+
+  updateUser(user:User): Observable<User>{
+    return this.http.put<User>(`${this.baseUrl}/update/${user.id}`, user);
+  }
+
+  uploadImage(image:File, id:any): Observable<User>{
+    let formData = new FormData();
+    formData.append("image", image);
+    formData.append("id", id);
+
+    return this.http.post(`${this.baseUrl}/upload/imageProfile`, formData).pipe(
+      map((response:any) => response.user as User),
+      catchError(e => {
+        Swal.fire(e.rrror.message, e.error.error, "error");
+        return throwError(() => e);
+      })
+    )
   }
 }

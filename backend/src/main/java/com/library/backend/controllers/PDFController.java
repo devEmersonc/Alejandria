@@ -39,7 +39,7 @@ public class PDFController {
 
         if(!image.isEmpty()){
             String imageName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename().replace(" ", "");
-            Path imagePath = Paths.get("uploads").resolve(imageName).toAbsolutePath();
+            Path imagePath = Paths.get("uploads_files").resolve(imageName).toAbsolutePath();
 
             try {
                 Files.copy(image.getInputStream(), imagePath);
@@ -68,7 +68,7 @@ public class PDFController {
 
     @GetMapping("/view/image/{imageName:.+}")
     public ResponseEntity<Resource> viewImage(@PathVariable String imageName){
-        Path filePath = Paths.get("uploads").resolve(imageName).toAbsolutePath();
+        Path filePath = Paths.get("uploads_files").resolve(imageName).toAbsolutePath();
         Resource recurso = null;
 
         try{

@@ -37,6 +37,7 @@ public class SecurityConfig {
                                 "/api/user/getUser/**",
                                 "/api/user/update/**",
                                 "/api/user/delete/**",
+                                "/api/user/view/profileImage/**",
                                 "/api/auth/login",
                                 "/api/files/upload/**",
                                 "/api/files/books",

@@ -35,6 +35,8 @@ public class User implements UserDetails {
     @NotBlank(message = "La contraseña es obligatoria.")
     private String password;
 
+    private String photo;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PDF> libros;
@@ -180,5 +182,13 @@ public class User implements UserDetails {
     @PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

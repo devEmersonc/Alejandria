@@ -1,44 +1,44 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-5">
             <div class="row justify-content-center mt-4">
                 <div class="col-8 text-center">
                     <h2>Actualizar perfil</h2>
                 </div>
             </div>
             <div class="row row-nowarp mx-auto p-2 mt-5 justify-content-center bg-box">
-                <div class="col-lg-4 p-5">
+                <div class="col-lg-12 p-5">
                     <div class="col text-center">
-                        <img src="../../../assets/user.png" alt="male.png"
-                            style="width: 150px; height: 150px; border-radius: 200px;">
+                        <img *ngIf="user?.photo" src="http://localhost:8080/api/user/view/profileImage/{{user.photo}}" alt="male.png" style="width: 150px; height: 150px; border-radius: 200px;">
+                        <img *ngIf="!user?.photo" src="../../../assets/user.png" alt="male.png" style="width: 150px; height: 150px; border-radius: 200px;">
                     </div>
-                    <div class="input-group mb-3 mt-4 mb-5">
-                        <input type="file" class="form-control" id="inputGroupFile02">
+                    <div class="input-group mb-3 mt-4 row mx-auto mb-5 justify-content-center">
+                       <div class="col-6">
+                            <input (change)="selectImage($event)" type="file" class="form-control" id="inputGroupFile02">
+                       </div>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary mx-auto d-flex d-block" type="button"
+                        <button [disabled]="!selectImage" (click)="uploadImage()" class="btn btn-outline-secondary mx-auto d-flex d-block" type="button"
                             id="inputGroupFile02">Subir foto</button>
+                    </div>
+                    <div class="form p-4">
+                        <div class="form-group row mx-auto">
+                            <label for="email" class="col-form-label text-center">Correo electrónico</label>
+                            <div class="col-lg-12">
+                                <input type="email" id="email" name="email" class="form-control" [(ngModel)]="user.email">                                
+                            </div>
+                            <div *ngFor="let error of errors">
+                                <p *ngIf="error.includes('electrónico')" class="text-danger text-center">{{error}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 d-flex justify-content-center p-3">
+                        <button class="btn btn-dark d-flex" (click)="updateUser()">Actualizar</button>
                     </div>
                 </div>
                 <div class="col mx-auto">
                     <div class="col-lg-12">
-                        <div class="form p-4">
-                            <div class="form-group row mx-auto">
-                                <label for="email" class="col-form-label ">Correo electrónico</label>
-                                <div class="col-lg-12">
-                                    <input type="email" id="email" name="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row mx-auto mb-4">
-                                <label for="password" class="col-form-label">Contraseña</label>
-                                <div class="col-lg-12">
-                                    <input type="password" id="password" name="password" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 d-flex justify-content-end p-3">
-                            <button class="btn btn-dark d-flex">Actualizar</button>
-                        </div>
+                        
                     </div>                    
                 </div>
             </div>

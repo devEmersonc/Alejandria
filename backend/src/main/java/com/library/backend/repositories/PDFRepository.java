@@ -9,4 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PDFRepository extends JpaRepository<PDF, Long> {
+
+
 }
