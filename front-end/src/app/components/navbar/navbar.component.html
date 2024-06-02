@@ -4,22 +4,6 @@
       <img class="icon" src="../../../assets/b3.png" alt="logo-image" width="25px" height="25px"
         style="cursor: pointer;">
     </a>
-    <div class="dropdown show">
-      <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Libros
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <ul class="nav-list mt-2 p-3">
-          <li class="nav-list-item" *ngFor="let c of categorias">
-            <i class="fa-solid fa-book"></i>
-            <span>
-              <a href="#">{{c.name}}</a>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,12 +26,13 @@
           <a class="nav-link" [routerLink]="['/login']">Inicia Sesión</a>
         </li>
         <li *ngIf="isLoggedIn()" class="nav-item" style="margin-right: 100px;">
-          <!--<a class="nav-link" [routerLink]="['/profile']">Perfil</a>-->          
+          <!--<a class="nav-link" [routerLink]="['/profile']">Perfil</a>-->
           <div class="dropdown show">
-            <button class="btn btn-secondary drp dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary drp dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Perfil
             </button>
-            <div class="dropdown-menu" style="min-width: 100%;" aria-labelledby="dropdownMenuButton">              
+            <div class="dropdown-menu" style="min-width: 100%;" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" [routerLink]="['/profile']">Perfil</a>
               <a class="dropdown-item" [routerLink]="['/book']">Subir nuevo libro</a>
               <a class="dropdown-item" (click)="logOut()" style="cursor: pointer;">Cerrar Sesión</a>
@@ -55,6 +40,6 @@
           </div>
         </li>
       </ul>
-    </div>    
+    </div>
   </div>
 </nav>

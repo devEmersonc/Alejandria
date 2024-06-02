@@ -12,7 +12,9 @@ import { FileService } from 'src/app/services/fileService/file.service';
 export class HomeComponent implements OnInit{
 
   books:Pdf[] = [];
-  filterBooks:string = '';
+  category:string = "";
+  filterBooks:string = "";
+  categories:string[] = ["Fantasía", "Poesía", "Ciencia ficción", "Comic", "Manga", "Economía", "Arte", "Ciencia", "Filosofía", "Historia", "Esoterismo", "Cocina", "Autoayuda"];
 
   constructor(private fileService: FileService){}
 

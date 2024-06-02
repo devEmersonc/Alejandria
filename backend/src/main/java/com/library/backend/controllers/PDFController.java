@@ -15,10 +15,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/files")
@@ -31,6 +28,11 @@ public class PDFController {
     @GetMapping("/books")
     public List<PDF> getAllBooks(){
         return pdfService.getBooks();
+    }
+
+    @GetMapping("/books/{category}")
+    public List<PDF> getBooksByCategory(@PathVariable String category){
+        return pdfService.getBooksByCategory(category);
     }
 
     @PostMapping("/upload/{user_id}/{title}/{author}/{category}")
@@ -91,5 +93,20 @@ public class PDFController {
         header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
 
         return new ResponseEntity<Resource>(recurso, header, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/book/{book_id}")
+    public ResponseEntity<?> deleteBook(@PathVariable Long book_id){
+        PDF book = pdfService.getFile(book_id);
+        Map<String, Object> response = new HashMap<>();
+
+        if(book == null){
+            response.put("message", "No se ha encontrado el libro ingresado.");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
+        pdfService.deleteBookById(book_id);
+        response.put("message", "El libro se ha eliminado con éxito.");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

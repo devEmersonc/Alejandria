@@ -13,4 +13,8 @@ public interface PDFService {
     PDF getFile(Long fileId);
 
     List<PDF> getBooks();
+
+    List<PDF> getBooksByCategory(String category);
+
+    void deleteBookById(Long book_id);
 }

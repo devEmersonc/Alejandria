@@ -9,7 +9,8 @@ export class FilterPipe implements PipeTransform {
     const resultBooks = [];
     for(const book of value){
       let fileName: any = book.fileName;
-      if(fileName.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(arg.toLowerCase()) > -1){
+      let category:any = book.category;
+      if(fileName.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(arg.toLowerCase()) > -1 || category.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(arg.toLowerCase()) > -1){
         resultBooks.push(book);
       };
     };

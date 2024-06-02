@@ -17,7 +17,7 @@ export class UserBooksComponent implements OnInit{
   author:string;
   category:string;
   user:User = new User();
-  categories:string[] = ["Fantasía", "Poesía", "Ciencia ficción", "Comic", "Manga", "Economía", "Arte", "Ciencia", "filosofía", "Historia", "Esoterismo", "Cocina", "Autoayuda"];
+  categories:string[] = ["Fantasía", "Poesía", "Ciencia ficción", "Comic", "Manga", "Economía", "Arte", "Ciencia", "Filosofía", "Historia", "Esoterismo", "Cocina", "Autoayuda"];
 
   constructor(private fileService: FileService, private login:AuthService){}
 
