@@ -16,6 +16,7 @@ import { UserBooksComponent } from './components/profile/user-books/user-books.c
 import { ForoComponent } from './components/foro/foro.component';
 import { CommentsComponent } from './components/foro/comments/comments.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     UserBooksComponent,
     ForoComponent,
     CommentsComponent,
-    FilterPipe
+    FilterPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

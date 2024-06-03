@@ -20,7 +20,7 @@
             <img *ngIf="book?.photo" class="card-img-top mt-3" src="http://localhost:8080/api/files/view/image/{{book.photo}}" alt="Card image cap">
             <img *ngIf="!book?.photo" class="card-img-top mt-3" src="../../../assets/nikola.png" alt="Card image cap">
             <div class="card-body">
-                <div class="contain text-center">
+                <div class="contain p-2 text-center">
                     <p class="card-text">{{book.fileName}}</p>
                     <p class="card-text">{{book.author}}</p>
                 </div>
