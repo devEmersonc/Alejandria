@@ -1,61 +1,68 @@
-<div class="row justify-content-center">
-    <div class="col-lg-8 mt-5 d-flex p-2 box">
-        <div class="col-1 d-flex align-items-center">
-            <img src="../../../assets/user.png" alt="" style="width: 100%;" class="mt-2">
-        </div>
-        <div class="col-lg-10 mt-2" style="margin-left: 30px;">
-            <p class="mt-2" *ngIf="post.user">{{post.user.username}} <span>20/05/2024</span></p>
-            <h4>{{post.title}}</h4>
-            <p class="mt-4">
-                {{post.description}}
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="row justify-content-center">
-    <div *ngIf="isLoggedIn()" class="row justify-content-center mt-3">
-        <div class="col-lg-6 mt-4 box d-flex">
-            <div class="col-1 mt-3">
-                <img src="../../../../assets/user.png" alt="" width="100%">
+<div class="container min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 mt-5 d-flex p-2 box">            
+            <div class="col-1 mt-2">
+                <img *ngIf="post.user.photo" src="http://localhost:8080/api/user/view/profileImage/{{post.user.photo}}" alt="" style="width: 100%;" class="mt-2">
+                <img *ngIf="!post.user.photo" src="../../../../assets/user.png" alt="" style="width: 100%;" class="mt-2">                
             </div>
-            <div class="col-lg-10 mt-4 mb-4" style="margin-left: 30px;">
-                <div class="col-12 d-flex justify-content-between">
-                    <p class="mt-2">{{currentUser.username}}</p>
-                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapsePost"
-                        aria-expanded="false" aria-controls="collapseExample">Comentar</button>
+            <div class="col mt-2" style="margin-left: 30px;">
+                <p class="mt-2">{{post.user.username}}  <span>{{post.createdAt | date: "dd-MM-YYYY h:mm a"}}</span></p>
+                <h4>{{post.title}}</h4>
+                <p class="mt-4">
+                    {{post.description}}
+                </p>
+            </div>
+        </div>
+    </div>  
+    
+    <div class="row justify-content-center">
+        <div *ngIf="isLoggedIn()" class="row justify-content-center mt-3">
+            <div class="col-lg-6 mt-4 box d-flex">
+                <div class="col-1 mt-3">
+                    <img *ngIf="currentUser?.photo" src="http://localhost:8080/api/user/view/profileImage/{{currentUser.photo}}" alt="" width="100%">
+                    <img *ngIf="!currentUser.photo" src="../../../../assets/user.png" alt="" width="100%">
                 </div>
-                <form class=" collapse" id="collapsePost" (ngSubmit)="newComment()">
-                    <div class="form-group">
-                        <label for="comment" class="col-form-label mt-2">
-                            <h6>Nuevo comentario:</h6>
-                            <div *ngFor="let error of errors">
-                                <p *ngIf="error.includes('comentario')" class="text-danger">{{error}}</p>
-                            </div>
-                        </label>
-                        <textarea name="comment" id="comment" class="mt-1 mb-3 form-control" cols="57" rows="6"
-                            style="resize: none;" placeholder="Ingresa tu comentario..." [(ngModel)]="comment.content"></textarea>
-                    </div>
-                    <div class="form-group row mx-auto justify-content-end">
-                        <div class="col-lg-12 position-relative mb-5 mt-4">
-                            <button class="btn btn-dark position-absolute top-0 end-0">Publicar</button>
+                <div class="col-lg-10 col-md-10 col-sm-10 col mt-4 mb-4" style="margin-left: 30px;">
+                    <div class="col-lg-12 d-flex justify-content-between">
+                        <h5 class="mt-2">{{currentUser.username}}</h5>
+                        <div class="d-flex">
+                            <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapsePost"
+                            aria-expanded="false" aria-controls="collapseExample">Comentar</button>
                         </div>
-                    </div>
-                </form>
+                    </div> 
+                    <form class=" collapse" id="collapsePost" (ngSubmit)="newComment()">
+                        <div class="form-group">
+                            <label for="comment" class="col-form-label mt-2">
+                                <h6>Nuevo comentario:</h6>
+                                <div *ngFor="let error of errors">
+                                    <p *ngIf="error.includes('comentario')" class="text-danger">{{error}}</p>
+                                </div>
+                            </label>
+                            <textarea name="comment" id="comment" class="mt-1 mb-3 form-control" cols="57" rows="6"
+                                style="resize: none;" placeholder="Ingresa tu comentario..." [(ngModel)]="comment.content"></textarea>
+                        </div>
+                        <div class="form-group row mx-auto justify-content-end">
+                            <div class="col-lg-12 position-relative mb-5 mt-4">
+                                <button class="btn btn-dark position-absolute top-0 end-0">Publicar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row justify-content-center" *ngFor="let comment of post.comments.reverse()">
-    <div class="row justify-content-center mt-3">
-        <div class="col-lg-6 mt-4 box d-flex">
-            <div class="col-1 justify-content-center d-flex align-items-center">
-                <img src="../../../../assets/user.png" alt="" width="100%">
-            </div>
-            <div class="col-lg-10 mt-3 mb-4" style="margin-left: 30px;">
-                <p class="mt-2">{{comment.user.username}} <span>{{comment.createdAt | date : "dd-MM-YYYY  h:mm a"}}</span></p>
-                <p>{{comment.content}}</p>
+    
+    <div class="row justify-content-center" *ngFor="let comment of post.comments.reverse()">
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-6 mt-4 box d-flex">
+                <div class="col-1 justify-content-center d-flex align-items-center">
+                    <img *ngIf="comment.user.photo" src="http://localhost:8080/api/user/view/profileImage/{{comment.user.photo}}" alt="" width="100%">
+                    <img *ngIf="!comment.user.photo" src="../../../../assets/user.png" alt="" width="100%">
+                </div>
+                <div class="col-lg-10 mt-1" style="margin-left: 30px;">
+                    <p class="mt-2">{{comment.user.username}} <span>{{comment.createdAt | date : "dd-MM-YYYY  h:mm a"}}</span></p>
+                    <p>{{comment.content}}</p>
+                </div>
             </div>
         </div>
     </div>

@@ -18,10 +18,6 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "La etiqueta es obligatoria.")
-    @Size(min = 4, max = 20, message = "La etiqueta debe tener entre 4 a 20 caracteres.")
-    private String tag;
-
     @NotBlank(message = "El título es obligatoria.")
     @Size(min = 10, message = "El título debe tener al menos 10 caracteres.")
     private String title;
@@ -51,14 +47,6 @@ public class Post {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 
     public String getTitle() {

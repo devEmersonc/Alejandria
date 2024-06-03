@@ -29,7 +29,6 @@ public class PostServiceImp implements PostService {
         Post newPost = new Post();
         User user = userRepository.findById(user_id).orElse(null);
 
-        newPost.setTag(post.getTag());
         newPost.setTitle(post.getTitle());
         newPost.setDescription(post.getDescription());
         newPost.setUser(user);
