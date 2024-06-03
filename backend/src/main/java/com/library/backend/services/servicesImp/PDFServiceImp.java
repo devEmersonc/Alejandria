@@ -47,10 +47,6 @@ public class PDFServiceImp implements PDFService {
         return pdfRepository.findAll();
     }
 
-    @Override
-    public List<PDF> getBooksByCategory(String category){
-        return pdfRepository.findByCategory(category);
-    }
 
     @Override
     public void deleteBookById(Long book_id){

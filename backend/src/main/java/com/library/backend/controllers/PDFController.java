@@ -30,11 +30,6 @@ public class PDFController {
         return pdfService.getBooks();
     }
 
-    @GetMapping("/books/{category}")
-    public List<PDF> getBooksByCategory(@PathVariable String category){
-        return pdfService.getBooksByCategory(category);
-    }
-
     @PostMapping("/upload/{user_id}/{title}/{author}/{category}")
     public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("image") MultipartFile image, @PathVariable Long user_id, @PathVariable String title, @PathVariable String author, @PathVariable String category) {
         Map<String, String> response = new HashMap<>();
